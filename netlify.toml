@@ -1,0 +1,40 @@
+[build]
+  # Comando para build (Netlify detecta pnpm automáticamente)
+  command = "pnpm build"
+  
+  # Directorio de publicación (Next.js genera .next)
+  publish = ".next"
+
+# Configuración del entorno de build
+[build.environment]
+  # Versión de Node.js
+  NODE_VERSION = "18"
+  
+  # Netlify detecta pnpm automáticamente si existe pnpm-lock.yaml
+
+# Plugin oficial de Netlify para Next.js
+# Maneja SSR, API routes, y optimizaciones automáticamente
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Headers de seguridad
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Headers para archivos estáticos
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers para imágenes
+[[headers]]
+  for = "/static/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
