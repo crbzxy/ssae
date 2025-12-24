@@ -59,9 +59,10 @@ export const Feature = {
       mb: 2,
     },
     description: {
-      fontSize: 'lg',
+      fontSize: 'md',
       fontWeight: 'normal',
       color: mode('gray.500', 'gray.400')(props),
+      lineHeight: 'tall',
     },
     icon: {
       mb: 4,
@@ -95,18 +96,40 @@ export const Feature = {
     },
     inline: {
       container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        spacing: 3,
+        p: { base: 5, md: 6, lg: 8 },
+        borderRadius: 'md',
+        bg: 'whiteAlpha.600',
+        border: '2px solid',
+        borderColor: 'gray.300',
+        _dark: {
+          bg: 'blackAlpha.300',
+          borderColor: 'gray.700',
+        },
+        minH: { base: 'auto', md: '200px' },
+        transition: 'all 0.2s',
+        _hover: {
+          bg: 'whiteAlpha.700',
+          _dark: { bg: 'blackAlpha.400' },
+          transform: 'translateY(-2px)',
+          boxShadow: 'lg',
+        },
       },
       title: {
-        display: 'inline-block',
-        mr: 1,
-        mb: 0,
+        display: 'block',
+        mb: 2,
+        textStyle: 'h4',
       },
       description: {
-        display: 'inline',
+        display: 'block',
+        fontSize: { base: 'sm', md: 'md' },
+        lineHeight: 'tall',
       },
       icon: {
-        mt: 4,
+        mb: 3,
+        mt: 0,
       },
     },
     light: ({ colorMode }: any) => ({

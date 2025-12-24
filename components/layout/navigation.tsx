@@ -33,11 +33,28 @@ const Navigation: React.FC = () => {
 
   return (
     <HStack spacing="2" flexShrink={0}>
-      {siteConfig.header.links.map(({ href, id, ...props }, i) => {
+      {siteConfig.header.links.map((link, i) => {
+        let finalHref: string
+        let id: string | undefined
+        let href: string | undefined
+
+        if ('href' in link && link.href) {
+          href = link.href as string
+          finalHref = href
+        } else if ('id' in link && link.id) {
+          id = link.id as string
+          finalHref = `/#${id}`
+        } else {
+          finalHref = '#'
+        }
+
+        const label = link.label
+        const variant = 'variant' in link ? (link.variant as 'primary' | 'secondary' | 'ghost' | undefined) : undefined
+
         return (
           <NavLink
             display={['none', null, 'block']}
-            href={href || `/#${id}`}
+            href={finalHref}
             key={i}
             isActive={
               !!(
@@ -45,9 +62,9 @@ const Navigation: React.FC = () => {
                 (href && !!path?.match(new RegExp(href)))
               )
             }
-            {...props}
+            variant={variant}
           >
-            {props.label}
+            {label}
           </NavLink>
         )
       })}

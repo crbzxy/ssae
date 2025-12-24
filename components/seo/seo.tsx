@@ -1,18 +1,14 @@
-import { NextSeo, NextSeoProps } from 'next-seo'
-
 import React from 'react'
 
-import siteConfig from '#data/config'
+// Este componente ya no se usa. La metadata se maneja en app/(marketing)/layout.tsx
+// Se mantiene para compatibilidad con código existente que pueda importarlo
+export interface SEOProps {
+  title?: string
+  description?: string
+  [key: string]: any
+}
 
-export interface SEOProps extends NextSeoProps {}
-
-export const SEO = ({ title, description, ...props }: SEOProps) => (
-  <NextSeo
-    title={title}
-    description={description}
-    openGraph={{ ...siteConfig.seo.openGraph, title, description }}
-    titleTemplate={siteConfig.seo.titleTemplate}
-    twitter={siteConfig.seo.twitter}
-    {...props}
-  />
-)
+export const SEO = (_props: SEOProps) => {
+  // No-op: La metadata se maneja en el layout
+  return null
+}

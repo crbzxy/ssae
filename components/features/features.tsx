@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react'
 
 import { Section, SectionTitle, SectionTitleProps } from 'components/section'
+import { BackgroundGradient } from '#components/gradients/background-gradient'
 
 const Revealer = ({ children }: any) => {
   return children
@@ -63,7 +64,7 @@ export const Feature: React.FC<FeatureProps> = (props) => {
   const direction = pos === 'left' ? 'row' : 'column'
 
   return (
-    <Stack sx={styles.container} direction={direction}>
+    <Stack sx={styles.container} direction={direction} spacing={3}>
       {icon && (
         <Circle sx={styles.icon}>
           <Icon as={icon} boxSize={iconSize} />
@@ -88,6 +89,7 @@ export const Features: React.FC<FeaturesProps> = (props) => {
     iconSize = 8,
     aside,
     reveal: Wrap = Revealer,
+    innerWidth,
     ...rest
   } = props
 
@@ -96,23 +98,25 @@ export const Features: React.FC<FeaturesProps> = (props) => {
   const ip = align === 'left' ? 'left' : 'top'
 
   return (
-    <Section {...rest}>
-      <Stack 
-        direction={{ base: 'column', lg: 'row' }} 
-        height="full" 
-        align="flex-start"
-        spacing={{ base: 6, lg: 8 }}
-      >
-        <VStack flex="1" spacing={[4, null, 8]} alignItems="stretch" width="100%">
-          {(title || description) && (
-            <Wrap>
-              <SectionTitle
-                title={title}
-                description={description}
-                align={align}
-              />
-            </Wrap>
-          )}
+    <Section pos="relative" innerWidth={innerWidth} {...rest}>
+      <BackgroundGradient height="100%" />
+      <Box zIndex="2" pos="relative" width="100%">
+        <Stack 
+          direction={{ base: 'column', lg: 'row' }} 
+          height="full" 
+          align="flex-start"
+          spacing={{ base: 6, lg: 8 }}
+        >
+          <VStack flex="1" spacing={[4, null, 8]} alignItems="stretch" width="100%">
+            {(title || description) && (
+              <Wrap>
+                <SectionTitle
+                  title={title}
+                  description={description}
+                  align={align}
+                />
+              </Wrap>
+            )}
           <SimpleGrid columns={columns} spacing={spacing} width="100%">
             {features.map((feature, i) => {
               return (
@@ -129,6 +133,7 @@ export const Features: React.FC<FeaturesProps> = (props) => {
           </Box>
         )}
       </Stack>
+      </Box>
     </Section>
   )
 }

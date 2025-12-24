@@ -50,16 +50,16 @@ export const HighlightsTestimonialItem: React.FC<
   HighlightBoxProps & TestimonialProps & { gradient: [string, string] }
 > = (props) => {
   const {
-    name,
-    description,
-    avatar,
+    cliente,
+    sector,
+    logo,
     children,
     gradient = ['primary.500', 'secondary.500'],
     ...rest
   } = props
   const theme = useTheme()
   const textColor = useColorModeValue('gray.800', 'white')
-  const descriptionColor = useColorModeValue('gray.600', 'whiteAlpha.700')
+  const sectorColor = useColorModeValue('gray.600', 'whiteAlpha.700')
   
   return (
     <HighlightsItem
@@ -81,13 +81,13 @@ export const HighlightsTestimonialItem: React.FC<
         _dark={{ opacity: 0.5, filter: 'blur(50px)' }}
       />
       <Testimonial
-        name={name}
-        description={
-          <Box as="span" color={descriptionColor}>
-            {description}
+        cliente={cliente}
+        sector={
+          <Box as="span" color={sectorColor}>
+            {sector}
           </Box>
         }
-        avatar={avatar}
+        logo={logo}
         border="0"
         bg="transparent"
         boxShadow="none"

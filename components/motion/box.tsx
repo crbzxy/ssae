@@ -1,13 +1,29 @@
 'use client'
 
-import { ChakraProps, chakra } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import { HTMLMotionProps, motion } from 'framer-motion'
+import * as React from 'react'
 
-export interface MotionBoxProps
-  extends Omit<HTMLMotionProps<'div'>, 'children' | 'style'>,
-    Omit<ChakraProps, 'transition' | 'color'> {
-  children?: React.ReactNode
-}
+export type MotionBoxProps = Omit<BoxProps, 'transition' | 'as'> &
+  Omit<HTMLMotionProps<'div'>, 'children' | 'style'> & {
+    children?: React.ReactNode
+  }
 
-// Usar motion() directamente en lugar de motion.create()
-export const MotionBox = motion(chakra.div)
+// Crear un componente motion usando Box de Chakra con motion.div
+export const MotionBox = React.forwardRef<HTMLDivElement, MotionBoxProps>(
+  (props, ref) => {
+    const { children, transition, ...rest } = props
+    return (
+      <Box
+        as={motion.div}
+        ref={ref}
+        transition={transition}
+        {...(rest as any)}
+      >
+        {children}
+      </Box>
+    )
+  },
+)
+
+MotionBox.displayName = 'MotionBox'

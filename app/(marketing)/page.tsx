@@ -18,7 +18,6 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import { Br, Link } from '@saas-ui/react'
-import type { Metadata, NextPage } from 'next'
 import Image from 'next/image'
 import {
   FiArrowRight,
@@ -63,13 +62,7 @@ import servicios from '#data/servicios'
 import testimonials from '#data/testimonials'
 import verticalesMercado from '#data/verticales-mercado'
 
-export const meta: Metadata = {
-  title: 'SAE | Producción de Eventos Corporativos, Gubernamentales y Broadcast',
-  description:
-    'Especialistas en sistemas parlamentarios, traducción simultánea, audio lineal, video streaming y producción integral para gobierno y televisión.',
-}
-
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <Box>
       <HeroSection />
@@ -265,18 +258,18 @@ const HighlightsSection = () => {
 }
 
 const FeaturesSection = () => {
-  // Mostrar solo los primeros 6 servicios principales
-  const serviciosPrincipales = servicios.servicios.slice(0, 6)
-
+  // Mostrar todos los 8 servicios
   return (
     <Features
-      id="features"
+      id="servicios"
       title={servicios.title}
       description={servicios.description}
       align="left"
-      columns={{ base: 1, md: 2, lg: 3 }}
+      columns={{ base: 1, md: 2, lg: 4 }}
+      spacing={8}
       iconSize={4}
-      features={serviciosPrincipales.map((servicio) => ({
+      innerWidth="container.2xl"
+      features={servicios.servicios.map((servicio) => ({
         title: servicio.title,
         description: servicio.description,
         variant: 'inline',
@@ -330,6 +323,10 @@ const PricingSection = () => {
         action: v.action,
         isDestacado: v.isDestacado,
       }))}
+      cta={{
+        href: '#contacto',
+        label: 'Solicitar cotización',
+      }}
     >
       <Text p={{ base: 4, md: 6 }} textAlign="center" color="muted" fontSize={{ base: 'sm', md: 'md' }}>
         Servicios especializados para cada vertical de mercado con protocolos y estándares específicos.

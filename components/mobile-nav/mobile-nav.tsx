@@ -117,19 +117,29 @@ export function MobileNavContent(props: MobileNavContentProps) {
                 </HStack>
               </Flex>
               <Stack alignItems="stretch" spacing="0">
-                {siteConfig.header.links.map(
-                  ({ href, id, label, ...props }, i) => {
-                    return (
-                      <NavLink
-                        href={href || `/#${id}`}
-                        key={i}
-                        {...(props as any)}
-                      >
-                        {label}
-                      </NavLink>
-                    )
-                  },
-                )}
+                {siteConfig.header.links.map((link, i) => {
+                  let finalHref: string
+                  
+                  if ('href' in link && link.href) {
+                    finalHref = link.href as string
+                  } else if ('id' in link && link.id) {
+                    finalHref = `/#${link.id}`
+                  } else {
+                    finalHref = '#'
+                  }
+                  
+                  const label = link.label
+                  
+                  return (
+                    <NavLink
+                      href={finalHref}
+                      label={label}
+                      key={i}
+                    >
+                      {label}
+                    </NavLink>
+                  )
+                })}
               </Stack>
             </Box>
           </Flex>

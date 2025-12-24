@@ -5,8 +5,8 @@ export default {
   servicios: [
     {
       id: 'audio',
-      title: 'Audio de Alta Fidelidad',
-      description: 'Desde sistemas lineales para conciertos masivos hasta microfonía de precisión para juntas directivas. Claridad acústica garantizada.',
+      title: 'Audio',
+      description: 'Sistemas de audio profesional para eventos de cualquier escala.',
       capacidades: [
         {
           title: 'Sistemas de refuerzo sonoro (PA)',
@@ -63,9 +63,8 @@ export default {
     },
     {
       id: 'comunicacion',
-      title: 'Comunicación Crítica & Votación',
-      description: 'Especialistas en sistemas de debate, votación electrónica y traducción simultánea para cumbres gubernamentales y asambleas.',
-      isDestacado: true,
+      title: 'Comunicación',
+      description: 'Sistemas de comunicación crítica, votación y traducción simultánea.',
       capacidades: [
         {
           title: 'Traducción simultánea',
@@ -93,8 +92,8 @@ export default {
     },
     {
       id: 'produccion-eventos',
-      title: 'Diseño y Operación',
-      description: 'Coordinación técnica "End-to-End". Desde el render inicial y el diseño de iluminación hasta la operación en vivo y post-producción.',
+      title: 'Producción de Eventos',
+      description: 'Coordinación técnica completa desde diseño hasta operación en vivo.',
       capacidades: [
         {
           title: 'Producción técnica completa',
@@ -151,8 +150,8 @@ export default {
     },
     {
       id: 'broadcast',
-      title: 'Calidad Televisiva',
-      description: 'Producción multicámara, unidades móviles y streaming encriptado para eventos híbridos. Aliados técnicos de las principales televisoras.',
+      title: 'Broadcast',
+      description: 'Producción multicámara y unidades móviles para televisión.',
       capacidades: [
         {
           title: 'Producción multicámara',
@@ -179,32 +178,49 @@ export default {
       },
     },
     {
-      id: 'conectividad-segura',
-      title: 'Redes para Eventos',
-      description: 'Infraestructura de red robusta para streaming, registro de asistentes y sistemas de votación sin latencia ni interrupciones.',
+      id: 'ventas-integracion',
+      title: 'Ventas e Integración',
+      description: 'Equipos de las mejores marcas y soluciones integradas a medida.',
       capacidades: [
         {
-          title: 'Redes dedicadas para eventos',
+          title: 'Equipos de marcas líderes',
         },
         {
-          title: 'Streaming sin latencia',
+          title: 'Integración de sistemas',
         },
         {
-          title: 'Sistemas de registro de asistentes',
+          title: 'Asesoría técnica especializada',
         },
         {
-          title: 'Conectividad para votación electrónica',
-        },
-        {
-          title: 'Backup y redundancia de red',
-        },
-        {
-          title: 'Seguridad de datos',
+          title: 'Soporte post-venta',
         },
       ],
       action: {
         href: '#contacto',
         label: 'Solicitar cotización',
+      },
+    },
+    {
+      id: 'servicios-creativos',
+      title: 'Servicios Creativos',
+      description: 'Diseño visual, escenografía y branding digital para eventos únicos.',
+      capacidades: [
+        {
+          title: 'Diseño visual y escenografía',
+        },
+        {
+          title: 'Branding digital',
+        },
+        {
+          title: 'Videomapping y proyecciones',
+        },
+        {
+          title: 'Diseño de iluminación',
+        },
+      ],
+      action: {
+        href: '#contacto',
+        label: 'Más información',
       },
     },
   ],

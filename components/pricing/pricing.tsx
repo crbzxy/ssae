@@ -32,10 +32,11 @@ export interface ServicioPlan {
 export interface ServiciosProps extends SectionProps {
   description: React.ReactNode
   servicios: Array<ServicioPlan>
+  cta?: ButtonLinkProps & { label?: string }
 }
 
 export const Pricing: React.FC<ServiciosProps> = (props) => {
-  const { children, servicios, title, description, ...rest } = props
+  const { children, servicios, title, description, cta, ...rest } = props
 
   return (
     <Section id="servicios" pos="relative" innerWidth="container.2xl" {...rest}>
@@ -75,17 +76,21 @@ export const Pricing: React.FC<ServiciosProps> = (props) => {
                   ),
                 )}
               </PricingFeatures>
-              <ButtonLink 
-                colorScheme="primary" 
-                {...servicio.action}
-                width="100%"
-                mt="auto"
-              >
-                {servicio.action.label || 'Más información'}
-              </ButtonLink>
             </PricingBox>
           ))}
         </SimpleGrid>
+
+        {cta && (
+          <Box mt={{ base: 8, md: 10 }} textAlign="center" width="100%">
+            <ButtonLink 
+              colorScheme="primary" 
+              size="lg"
+              {...cta}
+            >
+              {cta.label || 'Contactar'}
+            </ButtonLink>
+          </Box>
+        )}
 
         {children && (
           <Box mt={{ base: 6, md: 8 }} textAlign="center" width="100%">
@@ -173,7 +178,7 @@ const PricingBox: React.FC<PricingBoxProps> = (props) => {
           {price}
         </Box>
       )}
-      <VStack align="stretch" justifyContent="space-between" spacing="4" flex="1" minH="220px">
+      <VStack align="stretch" justifyContent="flex-start" spacing="4" flex="1">
         {children}
       </VStack>
     </VStack>
